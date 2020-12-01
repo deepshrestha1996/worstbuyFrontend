@@ -1,0 +1,37 @@
+<div>
+  <h2>Add Product</h2>
+  <form class="form-group" #productForm="ngForm">
+      <label for="productId"> Product Id</label>
+      <input class="form-control" type="text"  name="productId" placeholder="Product Id" [(ngModel)]="product.productId" required>
+      <br>
+    <label for="productName"> Product Name</label>
+    <input class="form-control" type="text"  name="productName" placeholder="Product Name" [(ngModel)]="product.productName" required>
+    <br>
+    <label for="quantity">Quantity</label>
+    <input class="form-control" type="number"  name="quantity" placeholder="quantity" [(ngModel)]="product.quantity" >
+    <br>
+    <label for="price">Price</label>
+    <input class="form-control" type="number"  name="price" placeholder="price" [(ngModel)]="product.price" >
+    <br>
+    <label for="brand">Brand</label>
+    <input class="form-control" type="text"  name="brand" placeholder="brand" [(ngModel)]="product.brand" >
+    <br>
+    <label for="color">Color</label>
+    <input class="form-control" type="text"  name="color" placeholder="color" [(ngModel)]="product.color" >
+    <br>
+    <label for="tags">Tags</label>
+    <input class="form-control" type="text"  name="tags" placeholder="tags" [(ngModel)]="product.tags" >
+    <br>
+    <label for="images"> Choose Image</label>
+    <input class="form-control" type="file" name="file" (change)="fileChanged($event)">
+    
+    
+
+    <br>
+    <button [disabled]="productForm.invalid" (click)="upload()" *ngIf="!submitting" class="btn btn-primary">SUBMIT</button>
+    <button disabled *ngIf="submitting" class="btn btn-info">SUBMITTING</button>
+
+  </form>
+
+
+</div>

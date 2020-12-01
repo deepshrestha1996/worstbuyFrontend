@@ -1,0 +1,47 @@
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="!loading">
+  <h2>Update Product</h2>
+  <form class="form-group" #productForm="ngForm">
+    <label for="productId">Product Id</label>
+    <input class="form-control" type="text" name="productId" placeholder="Product Id" [(ngModel)]="product.productId"
+      required>
+    <br>
+    <label for="productName">Product Name</label>
+    <input class="form-control" type="text" name="productName" placeholder="Product Name"
+      [(ngModel)]="product.productName" required>
+    <br>
+    <label for="quantity">Quantity</label>
+    <input class="form-control" type="number" name="quantity" placeholder="quantity" [(ngModel)]="product.quantity">
+    <br>
+    <label for="price">Price</label>
+    <input class="form-control" type="number" name="price" placeholder="price" [(ngModel)]="product.price">
+    <br>
+    <label for="brand">Brand</label>++
+    <input class="form-control" type="text" name="brand" placeholder="brand" [(ngModel)]="product.brand">
+    <br>
+    <label for="color">Color</label>
+    <input class="form-control" type="text" name="color" placeholder="color" [(ngModel)]="product.color">
+    <br>
+    <label for="tags">Tags</label>
+    <input class="form-control" type="text" name="tags" placeholder="tags" [(ngModel)]="product.tags">
+    <br>
+    <div>
+      <label for="images">Image</label>
+      <img src="{{imgUrl}}{{product.image}}" width="200px" height="200px" alt="">
+    </div>
+    <label for="images">Choose New Image</label>
+    <input class="form-control" type="file" name="file" (change)="fileChanged($event)">
+
+
+
+    <br>
+    <button [disabled]="productForm.invalid" (click)="update()" *ngIf="!submitting"
+      class="btn btn-primary">SUBMIT</button>
+    <button disabled *ngIf="submitting" class="btn btn-info">SUBMITTING</button>
+
+  </form>
+
+
+</div>

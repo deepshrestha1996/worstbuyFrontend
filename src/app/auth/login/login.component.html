@@ -1,0 +1,39 @@
+
+<div *ngIf="!isLoggedIn()" >
+    <h2>welcome to Smart IMS</h2>
+    <p>Please login to start your session</p>
+    <form #loginForm="ngForm" class="form-group" >
+        <input type="checkbox"   [checked]="loginByEmail" (change)="changeLoginMethod()">login through email
+        <div *ngIf="loginByEmail">
+            <label for="email">email</label>
+            <input class="form-control" type="text" placeholder="email" name="email" [(ngModel)]="user.email" required>
+
+
+        </div>
+        <div *ngIf="!loginByEmail">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" placeholder="username" name="username" [(ngModel)]="user.username"
+                required #username="ngModel">
+            <div class="danger" [hidden]="username.valid || username.pristine">
+                required field*
+            </div>
+        </div>
+        <label for="password">Password</label>
+        <input class="form-control" type="password" placeholder="Password" name="password" [(ngModel)]="user.password"
+            required #password="ngModel">
+        <div class="danger" [hidden]="password.valid || password.pristine">
+            required field*
+
+        </div>
+        <br>
+
+        <button [disabled]="loginForm.invalid" *ngIf="!submitting" (click)="login()"
+            class="btn btn-primary">login</button>
+        <button disabled class="btn btn-info" *ngIf="submitting">logging in...</button>
+    </form>
+    <br>
+    <span>dont have an account??</span><a [routerLink] ="['/auth/register']">register here</a>
+    <br>
+    <p><a [routerLink]="['/auth/forgot-password']">forgot Password?</a></p>
+
+</div>
